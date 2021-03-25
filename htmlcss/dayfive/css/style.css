@@ -1,0 +1,185 @@
+/* p {
+    font-family: 'Redressed', cursive;
+    font-style: italic;
+    font-variant: small-caps;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+p {
+    display: inline;
+    color: #F00;
+    direction: ltr;
+    letter-spacing: 2px;
+    word-spacing: 20px;
+    text-indent: 30px;
+    text-align: center;
+    text-decoration: underline;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+a {
+    text-decoration: none;
+}
+
+div {
+    white-space: nowrap;
+    overflow: hidden;
+    border: 1px solid black;
+    width: 50px;
+    text-overflow: ellipsis;
+} */
+
+.block {
+    width: 100px;
+    height: 100px;
+}
+
+.bg--yellow {
+    background-color: yellow;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.overflow-scroll {
+    overflow: scroll;
+}
+
+
+/* usually use */
+
+.overflow-auto {
+    overflow: auto;
+}
+
+
+/* text-shadow */
+
+.text-shadow {
+    text-shadow: 2px 2px 2px grey;
+}
+
+.btn {
+    box-shadow: 2px 2px 2px grey;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+
+/* reset browser */
+
+
+/* * {
+    padding: 0;
+    margin: 0;
+} */
+
+
+/* body,
+td,
+th,
+ul,
+table,
+ol {
+    padding: 0;
+    margin: 0;
+} */
+
+.bg-container {
+    width: 100%;
+    /* width: 100vw; */
+    height: 90vh;
+    background-image: url("../images/bg.jpg");
+    /* background-size: 100%; */
+    background-size: 1000px;
+    /* background-repeat: no-repeat; */
+    /* background-position: center; */
+    /* background-position: top right; */
+    /* background-position: bottom right; */
+    /* background-position: 100px 50px; */
+    background-attachment: fixed;
+}
+
+.border {
+    margin: 20px;
+    /* border: 2px solid #000; */
+    border: 2px dotted #F00;
+    border-bottom: 2px solid #F00;
+    border-top-color: blue;
+}
+
+h2.top {
+    margin: 20px;
+}
+
+h2 {
+    /* padding: 10px;
+    margin: 20px; */
+    /* border: 2px solid black; */
+    /* padding-top: 30px;
+    margin-top: 50px; */
+    margin: 20px;
+}
+
+.a1 {
+    display: block;
+}
+
+.h2 {
+    display: inline;
+    text-align: center;
+}
+
+.display {
+    /* display: inline-block; */
+    width: 300px;
+    height: 100px;
+    text-align: center;
+    display: none;
+}
+
+
+/* float */
+
+.div1 {
+    display: inline-block;
+    width: 30%;
+    float: left;
+}
+
+.div2 {
+    display: inline-block;
+    width: 70%;
+    float: right;
+    background-color: yellow;
+}
+
+.div2 img {
+    width: 300px;
+}
+
+.div3 {
+    float: left;
+}
+
+.container::after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+
+/* .div4 {
+    clear: both;
+}
+
+span {
+    clear: both;
+} */

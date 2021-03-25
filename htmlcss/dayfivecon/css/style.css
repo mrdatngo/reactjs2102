@@ -1,0 +1,133 @@
+div#block {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+}
+
+@media only all and (min-width: 320px) and (max-width: 374px) {
+    div#block {
+        background-color: green;
+    }
+}
+
+
+/* width browser bigger than 500px */
+
+@media only all and (min-width: 500px) {
+    div {
+        border: 2px solid black;
+    }
+}
+
+
+/* width browser smaller than 500px */
+
+@media only all and (max-width: 500px) {
+    div {
+        /* border: 2px dotted black; */
+    }
+}
+
+.block {
+    top: 100px;
+    left: 100px;
+}
+
+.relative {
+    position: relative;
+}
+
+.container {
+    width: 400px;
+    height: 400px;
+    background-color: grey;
+    margin-left: 150px;
+}
+
+.absolute {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+.grand {
+    position: relative;
+}
+
+.calling {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.transform {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    /* transform: translate(50px, 50px); */
+    /* transform: rotate(45deg); */
+    /* transform: scaleY(2); */
+}
+
+.transform:hover {
+    transition: transform 2s;
+    transform: translate(50px, 50px) rotate(45deg) scale(2);
+}
+
+.search {
+    width: 30px;
+    transition: width 1s;
+}
+
+.search:focus {
+    transition: width 1s ease-in-out 3s, background-color 2s;
+    width: 300px;
+    background-color: yellow;
+}
+
+
+/* 
+@keyframes dance {
+    from {
+        top: 0px;
+        left: 0px;
+    }
+    to {
+        top: 0px;
+        left: 100px;
+    }
+} */
+
+@keyframes dance {
+    0% {
+        top: 0px;
+        left: 0px;
+    }
+    25% {
+        top: 0px;
+        left: 100px;
+    }
+    50% {
+        top: 100px;
+        left: 100px;
+    }
+    75% {
+        top: 100px;
+        left: 0px;
+    }
+    100% {
+        top: 0px;
+        left: 0px;
+    }
+}
+
+.animation {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    animation: dance 4s ease-in-out 1s infinite normal backwards;
+}

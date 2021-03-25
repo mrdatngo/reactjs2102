@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- External -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- Internal -->
+    <style>
+        /* h2 {
+            color: yellow;
+        } */
+        /* #p2 {
+            color: red;
+        } */
+        /* .yellow-color {
+            color: yellow;
+        } */
+        /* p {
+            color: red
+        } */
+        /* .big-size {
+            font-size: 30px;
+        }
+        
+        p.yellow-color {
+            color: yellow;
+        } */
+        
+        article div h2 {
+            color: red;
+        }
+        
+        article>h2 {
+            color: red;
+        }
+        /* p, h2 {
+            color: red;
+        }
+        
+        h2 {
+            color: red;
+        } */
+        
+        p.orange-color {
+            color: orange;
+        }
+        /* #red-color {
+            color: red;
+        } */
+        
+        .blue-color {
+            color: blue
+        }
+        /* p {
+            color: yellow;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- style inline -->
+    <h2 style="color: blue">Hello class</h2>
+    <!-- <h2>Hello class</h2> -->
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate libero magni aut dignissimos molestias, atque dolor recusandae molestiae sunt quae sit repellat officiis in debitis distinctio, praesentium fugit officia! Voluptatum!</p>
+
+    <h2 class="yellow-color">h2</h2>
+    <p class="yellow-color big-size">p1</p>
+    <p id="p2">p2</p>
+    <p class="yellow-color">p3</p>
+    <p class="yellow-color">p4</p>
+    <p class="yellow-color">p5</p>
+    <hr>
+    <article>
+        <h2>ReactJS</h2>
+        <div>
+            <h2>cháu h2</h2>
+            <div>
+                <h2>con của cháu h2</h2>
+            </div>
+        </div>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. In iste impedit earum corporis quaerat veniam eligendi. Porro illum ipsum velit deleniti. Libero recusandae odio ut aut facere tenetur, incidunt adipisci?</p>
+    </article>
+    <article>
+        <h2>ReactJS2</h2>
+    </article>
+    <section>
+        <h2>Fake</h2>
+    </section>
+    <!-- priority -->
+    <p id="red-color" class="blue-color orange-color">Paragraph</p>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+/* p {
+    color: red
+} */
+
+
+/* sibling */
+
+
+/* .this~.is {
+    color: red
+}
+
+.this+.is {
+    color: red;
+} */
+
+
+/* Specificities */
+
+
+/* .container #p1.this {
+    color: yellow;
+}
+
+#container p.this {
+    color: red
+} */
+
+
+/* .red-color {
+    color: red;
+}
+
+.container div p:first-child {
+    color: red;
+} */
+
+
+/* .container div p:first-of-type {
+    color: red;
+} */
+
+
+/* .container div p:nth-child(2) {
+    color: brown
+}
+
+.container div p:nth-last-child(2) {
+    color: bisque
+}
+
+.container div p:last-child {
+    color: yellow;
+} */
+
+
+/* .container div p:only-child {
+    color: yellow;
+} */
+
+
+/* .username:focus {
+    width: 300px;
+}
+
+.gender:checked {
+    background-color: red;
+}
+
+a:visited {
+    color: black;
+}
+
+a:link {
+    color: red;
+}
+
+a:active {
+    color: yellow;
+}
+
+a:hover {
+    color: aqua;
+} */
+
+
+/* 
+.para::first-line {
+    color: red;
+}
+
+.para::first-letter {
+    font-size: 30px;
+}
+
+.para::selection {
+    background-color: black;
+    color: yellow
+}
+
+.para::after {
+    display: block;
+    content: "abc";
+}
+
+.para::before {
+    display: block;
+    content: "abc";
+} */
+
+.container {
+    background-color: yellow;
+    width: 200px;
+    height: 200px;
+}
+
+.block {
+    background-color: green;
+    width: 25%;
+    height: 25%;
+}
+
+.block div p {
+    font-size: 1.2em;
+}
+
+p {
+    /* color: red; */
+    color: #0000FF;
+}
