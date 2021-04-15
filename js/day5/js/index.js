@@ -176,7 +176,7 @@ let students10Marks = reactJSStudents.filter((student, index) => {
 });
 
 console.log("students10Marks: ", students10Marks);
-// excersize: Tìm tất cả students có họ Nguyen
+// excersize: Tìm tất cả students có tên tồn tại là Nguyen
 let studentsFirstNameNguyen = reactJSStudents.filter((student) => {
   return student.name.includes("Nguyen");
 });
