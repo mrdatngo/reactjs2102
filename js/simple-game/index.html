@@ -6,11 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 
 <body>
-    <img id="scream" src="images/player.png" alt="The Scream" width="220" height="277">
-    <canvas id="mycanvas" width="300" height="300" style="border: 1px solid black"></canvas>
+
+    <canvas id="simple-game" width="500" height="500">
+        This browser doesn't support canvas.
+    </canvas>
+    <script src="js/player.js"></script>
     <script src="js/index.js"></script>
 </body>
 
