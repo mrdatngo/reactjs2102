@@ -14,4 +14,25 @@ const login = (data) => {
   });
 };
 
-export { login };
+const getPosts = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve([
+        {
+          id: 1,
+          title: "Post 1",
+          description: "This is description of post 1",
+          author: "MrDat",
+        },
+        {
+          id: 2,
+          title: "Post 2",
+          description: "This is description of post 2",
+          author: "MrDat",
+        },
+      ]);
+    }, 1000);
+  });
+};
+
+export { login, getPosts };

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import "../styles/Login.css";
 import { login } from "../../apis/index";
+import Clock from "../components/Clock";
 
 class LoginPage extends Component {
   constructor() {
@@ -13,6 +14,20 @@ class LoginPage extends Component {
       errors: {},
       isLoading: false,
     };
+  }
+
+  componentDidMount() {
+    console.log("Component rendered for the first time");
+    // usually for fetch data from api
+  }
+
+  componentDidUpdate() {
+    console.log("ComponentDidUpdate");
+    // post check
+    let { errors } = this.state;
+    if (errors.username || errors.password) {
+      document.title = "Error in Login";
+    }
   }
 
   onInputChange = (event) => {
@@ -64,9 +79,11 @@ class LoginPage extends Component {
   };
 
   render() {
+    console.log("RENDER LOGIN");
     const { errors, isLoading } = this.state;
     return (
       <form className="login-container">
+        <Clock />
         <h3>Login</h3>
         <label htmlFor="">User name</label>
         <input

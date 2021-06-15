@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { login } from "../../apis/index";
 
 const LoginPageFC = () => {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
   const [data, setData] = useState({
     username: "",
     password: "",
@@ -11,13 +9,25 @@ const LoginPageFC = () => {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  // const onChangeUsername = (event) => {
-  //   setUsername(event.target.value);
-  // };
+  useEffect(() => {
+    console.log("union componentDidMount & componentDidUpdate");
+    // setData({});
+    return () => {
+      console.log("componentWillUpdate");
+    };
+  }, []);
 
-  // const onChangePassword = (event) => {
-  //   setPassword(event.target.value);
-  // };
+  useEffect(() => {
+    console.log("componentDidMount");
+    // fetch data
+    return () => {
+      console.log("componentWillUnmount");
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log("update username title");
+  }, [data.username]);
 
   const onInputChange = (event) => {
     setData({
@@ -28,8 +38,6 @@ const LoginPageFC = () => {
 
   const submit = (event) => {
     event.preventDefault();
-    console.log("username: ", username);
-    console.log("password: ", password);
     const { username, password } = data;
     // validate before request login to server
     let errors = {};
@@ -66,8 +74,6 @@ const LoginPageFC = () => {
   return (
     <form className="login-container">
       <h3>Login</h3>
-      <h3>{data.username}</h3>
-      <h3>{data.password}</h3>
       <label htmlFor="">User name</label>
       <input
         onChange={onInputChange}
