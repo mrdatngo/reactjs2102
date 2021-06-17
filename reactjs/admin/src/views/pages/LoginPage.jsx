@@ -1,115 +1,76 @@
-import React, { Component } from "react";
+import { Form, Input, Button, Checkbox } from "antd";
 
-import "../styles/Login.css";
-import { login } from "../../apis/index";
-import Clock from "../components/Clock";
+const layout = {
+  labelCol: {
+    span: 4,
+  },
+  wrapperCol: {
+    span: 8,
+  },
+};
+const tailLayout = {
+  wrapperCol: {
+    offset: 4,
+    span: 8,
+  },
+};
 
-class LoginPage extends Component {
-  constructor() {
-    super();
-    this.state = {
-      username: "",
-      password: "",
-      address: "",
-      errors: {},
-      isLoading: false,
-    };
-  }
-
-  componentDidMount() {
-    console.log("Component rendered for the first time");
-    // usually for fetch data from api
-  }
-
-  componentDidUpdate() {
-    console.log("ComponentDidUpdate");
-    // post check
-    let { errors } = this.state;
-    if (errors.username || errors.password) {
-      document.title = "Error in Login";
-    }
-  }
-
-  onInputChange = (event) => {
-    // this.state.username
-    // this.state["username"]
-    // if (name == "username") {
-    //   this.setState({ username: value });
-    // } else if (name === "password") {
-    //   this.setState({ password: value });
-    // } =>
-    this.setState({ [event.target.name]: event.target.value });
+const LoginPage = () => {
+  const onFinish = (values) => {
+    console.log("Success:", values);
   };
 
-  submit = (event) => {
-    event.preventDefault();
-    const { username, password } = this.state;
-    console.log("username: ", username);
-    console.log("password: ", password);
-    // validate before request login to server
-    let errors = {};
-    if (username == "") {
-      errors.username = "Username cann't be blank!";
-    }
-    if (password == "") {
-      errors.password = "Password cann't be blank!";
-    }
-    if (errors.username || errors.password) {
-      // validate failed
-      console.log("TEST");
-    } else {
-      // validate success
-      // call api to verify user
-      this.setState({ isLoading: true });
-      login({
-        username,
-        password,
-      })
-        .then((data) => {
-          console.log("Data: ", data);
-          this.setState({ isLoading: false });
-        })
-        .catch((err) => {
-          console.log("error", err);
-          this.setState({ isLoading: false });
-        });
-      // this.setState({ isLoading: false });
-    }
-    this.setState({ errors });
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
   };
 
-  render() {
-    console.log("RENDER LOGIN");
-    const { errors, isLoading } = this.state;
-    return (
-      <form className="login-container">
-        <Clock />
-        <h3>Login</h3>
-        <label htmlFor="">User name</label>
-        <input
-          onChange={this.onInputChange}
-          name="username"
-          type="text"
-          placeholder="Enter Username"
-        />
-        <span style={{ color: "red" }}>{errors && errors.username}</span>
-        <br />
-        <label htmlFor="">Password</label>
-        <input
-          onChange={this.onInputChange}
-          name="password"
-          type="password"
-          placeholder="Enter password"
-        />
-        <span style={{ color: "red" }}>{errors.password}</span>
-        <br />
-        <button disabled={isLoading} onClick={this.submit}>
+  return (
+    <Form
+      {...layout}
+      name="basic"
+      initialValues={{
+        remember: true,
+      }}
+      onFinish={onFinish}
+      onFinishFailed={onFinishFailed}
+    >
+      <Form.Item
+        label="Username"
+        name="username"
+        rules={[
+          {
+            required: true,
+            message: "Please input your username!",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        label="Password"
+        name="password"
+        rules={[
+          {
+            required: true,
+            message: "Please input your password!",
+          },
+        ]}
+      >
+        <Input.Password />
+      </Form.Item>
+
+      <Form.Item {...tailLayout} name="remember" valuePropName="checked">
+        <Checkbox>Remember me</Checkbox>
+      </Form.Item>
+
+      <Form.Item {...tailLayout}>
+        <Button type="primary" htmlType="submit">
           Submit
-        </button>
-      </form>
-    );
-  }
-}
+        </Button>
+      </Form.Item>
+    </Form>
+  );
+};
 
 export default LoginPage;
-// export { LoginPage };

@@ -15,7 +15,7 @@ const LoginPageFC = () => {
     return () => {
       console.log("componentWillUpdate");
     };
-  }, []);
+  });
 
   useEffect(() => {
     console.log("componentDidMount");
@@ -61,6 +61,10 @@ const LoginPageFC = () => {
       })
         .then((data) => {
           console.log("Data: ", data);
+          let token = data.data.token;
+          // store token to localStorage
+          localStorage.setItem("token", token);
+          window.location = "/home";
           setIsLoading(false);
         })
         .catch((err) => {

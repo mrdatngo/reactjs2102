@@ -7,7 +7,6 @@ import { getPosts } from "../../apis";
 const HomePage = () => {
   let history = useHistory();
   let location = useLocation();
-
   const [posts, setPosts] = useState([]);
 
   const addPost = () => {
