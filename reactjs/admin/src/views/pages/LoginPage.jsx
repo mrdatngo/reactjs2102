@@ -1,7 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Form, Input, Button, Checkbox, Card, Typography } from "antd";
+import { useHistory } from "react-router-dom";
+
 import { login } from "../../apis";
 import { saveToken } from "../../utils/tokenHandler";
+import store from "../../store";
+
 const layout = {
   labelCol: {
     span: 8,
@@ -18,6 +22,7 @@ const tailLayout = {
 };
 
 const LoginPage = () => {
+  const history = useHistory();
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const usernameInput = useRef(null);
@@ -37,7 +42,10 @@ const LoginPage = () => {
         // login successed
         // => store token localstorage
         saveToken(data.token);
-        window.location = "/home";
+        console.log(data);
+        store.auth.name = data.username;
+        // window.location = "/home";
+        history.push("/home");
       })
       .catch((err) => {
         let message = "Something went wrong!";

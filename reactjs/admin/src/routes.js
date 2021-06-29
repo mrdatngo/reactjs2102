@@ -1,10 +1,11 @@
+import Dashboard from "./views/pages/Dashboard";
 const routes = [
   {
     path: "/home",
     title: "Home",
     icon: "",
     exact: true,
-    component: "Home",
+    component: <Dashboard />,
   },
   {
     path: "/files",
