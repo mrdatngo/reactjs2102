@@ -5,4 +5,4 @@ const login = (data) => {
     .then((rsp) => rsp.data);
 };
 
-export { login };
+export default { login };

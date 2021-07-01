@@ -1,10 +1,9 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Form, Input, Button, Checkbox, Card, Typography } from "antd";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
 
-import { login } from "../../apis";
-import { saveToken } from "../../utils/tokenHandler";
-import store from "../../store";
+import { login } from "../../redux/actions/auth";
 
 const layout = {
   labelCol: {
@@ -21,7 +20,7 @@ const tailLayout = {
   },
 };
 
-const LoginPage = () => {
+const LoginPage = ({ login }) => {
   const history = useHistory();
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -35,16 +34,12 @@ const LoginPage = () => {
 
   const onFinish = (values) => {
     console.log("Success:", values);
-    // call api
-    login(values)
-      .then((data) => {
-        console.log("data: ", data);
-        // login successed
-        // => store token localstorage
-        saveToken(data.token);
-        console.log(data);
-        store.auth.name = data.username;
-        // window.location = "/home";
+    // action login
+    setLoading(true);
+    login()
+      .then(() => {
+        setMessage("");
+        setLoading(false);
         history.push("/home");
       })
       .catch((err) => {
@@ -55,6 +50,7 @@ const LoginPage = () => {
           // handle later
         }
         setMessage(message);
+        setLoading(false);
       });
   };
 
@@ -116,7 +112,12 @@ const LoginPage = () => {
           {message}
         </Typography.Text>
         <Form.Item {...tailLayout}>
-          <Button ref={submitBtn} type="primary" htmlType="submit">
+          <Button
+            loading={loading}
+            ref={submitBtn}
+            type="primary"
+            htmlType="submit"
+          >
             Submit
           </Button>
         </Form.Item>
@@ -125,4 +126,8 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+function mapStateToProps() {
+  return {};
+}
+
+export default connect(mapStateToProps, { login })(LoginPage);

@@ -1,4 +1,7 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
+import reducer from "../reducers";
 
 const InitialState = {
   auth: {
@@ -7,24 +10,13 @@ const InitialState = {
   counter: {
     value: 0,
   },
+  posts: {},
+  feedback: {},
 };
 
-const reducer = (state = InitialState, action) => {
-  console.log(state, action);
-  switch (action.type) {
-    case "INCREASE":
-      return {
-        ...state,
-        counter: {
-          value: state.counter.value + 1,
-        },
-      };
-  }
-  return state;
-};
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 
-const store = createStore(reducer, InitialState);
-
+export default store;
 // const store = {
 //   state: state,
 //   cbs: [],
@@ -46,4 +38,4 @@ const store = createStore(reducer, InitialState);
 //   },
 // };
 
-export default store;
+// export default store;

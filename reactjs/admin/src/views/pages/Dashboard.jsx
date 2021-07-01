@@ -1,29 +1,20 @@
 import React, { useState, useEffect } from "react";
-import store from "../../store";
+import { connect } from "react-redux";
 
-const Dashboard = () => {
-  const [value, setValue] = useState(store.getState().counter.value);
+import { increase, increaseDelay } from "../../redux/actions/counter";
 
+const Dashboard = ({ value, increaseMapped, increaseDelay }) => {
   const onBtnClick = () => {
-    console.log(store.getState().counter.value);
-    // store.increase();
-    store.dispatch({ type: "INCREASE" });
-    setValue(store.getState().counter.value);
+    increaseMapped();
   };
 
   const onBtnClickAfter1Second = () => {
-    // actions
-    setTimeout(() => {
-      store.dispatch({ type: "INCREASE" });
-    }, 1000);
-
-    // udpate state
-    setValue(store.getState().counter.value);
+    increaseDelay();
   };
 
   return (
     <div>
-      <p>Welcome, {store.getState().auth.name} to dashboard</p>
+      <p>Welcome, {} to dashboard</p>
       <hr />
       <Header />
       <br />
@@ -34,17 +25,25 @@ const Dashboard = () => {
   );
 };
 
-const Header = () => {
-  const [value, setValue] = useState(store.getState().counter.value);
-
-  useEffect(() => {
-    store.subscribe(() => {
-      // console.log("Data trong header: ", state);
-      setValue(store.getState().counter.value);
-    });
-  }, []);
-
-  return <label htmlFor="">Value: {value}</label>;
+const HeaderTemp = ({ number }) => {
+  return <label htmlFor="">Value: {number}</label>;
 };
 
-export default Dashboard;
+function mapStateToPropsHeader(state) {
+  return {
+    number: state.counter.value,
+  };
+}
+
+const Header = connect(mapStateToPropsHeader)(HeaderTemp);
+
+function mapStateToProps(state) {
+  return {
+    value: state.counter.value,
+  };
+}
+
+export default connect(mapStateToProps, {
+  increaseMapped: increase,
+  increaseDelay,
+})(Dashboard);
