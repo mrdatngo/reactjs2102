@@ -31,7 +31,11 @@ const DefaultLayout = ({ routes }) => {
         <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
           {routes.map((route) => {
             return route.children ? (
-              <SubMenu key={route.path} icon={<UserOutlined />} title="User">
+              <SubMenu
+                key={route.path}
+                icon={<UserOutlined />}
+                title={route.title}
+              >
                 {route.children.map((subRoute) => {
                   return (
                     <Menu.Item key={subRoute.path}>

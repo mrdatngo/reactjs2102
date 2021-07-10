@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import LoginPage from "./views/pages/LoginPage";
 import DefaultLayout from "./views/layout/DefaultLayout";
 import Page404 from "./views/pages/Page404";
+import PrivateRoute from "./views/components/router/PrivateRoute";
 
 import routes from "./routes";
 
@@ -15,9 +16,9 @@ function App() {
         <Route path="/page404">
           <Page404 />
         </Route>
-        <Route path="/">
+        <PrivateRoute path="/">
           <DefaultLayout routes={routes} />
-        </Route>
+        </PrivateRoute>
       </Switch>
     </Router>
   );

@@ -20,12 +20,16 @@ const tailLayout = {
   },
 };
 
-const LoginPage = ({ login }) => {
+const LoginPage = ({ isLoggedIn, login }) => {
   const history = useHistory();
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const usernameInput = useRef(null);
   const submitBtn = useRef(null);
+
+  if (isLoggedIn) {
+    history.push("/");
+  }
 
   useEffect(() => {
     usernameInput.current.focus();
@@ -36,7 +40,7 @@ const LoginPage = ({ login }) => {
     console.log("Success:", values);
     // action login
     setLoading(true);
-    login()
+    login(values)
       .then(() => {
         setMessage("");
         setLoading(false);
@@ -45,8 +49,9 @@ const LoginPage = ({ login }) => {
       .catch((err) => {
         let message = "Something went wrong!";
         let rsp = err.response;
-        if (rsp) {
-          message = "This message will be get from rsp";
+        if (rsp && rsp.data && rsp.data.message) {
+          // console.log("rsp", rsp);
+          message = rsp.data.message;
           // handle later
         }
         setMessage(message);
@@ -126,8 +131,10 @@ const LoginPage = ({ login }) => {
   );
 };
 
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  return {
+    isLoggedIn: state.auth && state.auth.token,
+  };
 }
 
 export default connect(mapStateToProps, { login })(LoginPage);

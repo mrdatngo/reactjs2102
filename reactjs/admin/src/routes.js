@@ -1,4 +1,7 @@
 import Dashboard from "./views/pages/Dashboard";
+import Posts from "./views/components/posts/Posts";
+import AddPost from "./views/components/posts/AddPost";
+
 const routes = [
   {
     path: "/home",
@@ -20,6 +23,25 @@ const routes = [
     icon: "",
     exact: true,
     component: "This is account",
+  },
+  {
+    path: "/postsdsaf",
+    title: "Posts",
+    icon: "",
+    children: [
+      {
+        path: "/posts/list",
+        title: "List",
+        icon: "",
+        component: <Posts />,
+      },
+      {
+        path: "/posts/add",
+        title: "Add",
+        icon: "",
+        component: <AddPost />,
+      },
+    ],
   },
   {
     path: "/users",
