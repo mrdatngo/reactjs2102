@@ -17,7 +17,8 @@ module.exports = function(request, response) {
             }
             console.log("Saved!");
             response.status(200).json({
-                success: true
+                success: true,
+                message: "Add post successful!"
             })
         })
     });
