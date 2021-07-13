@@ -1,10 +1,10 @@
-import React from "react";
-import { Form, Input, Button, Checkbox } from "antd";
+import React, { useEffect } from "react";
+import { Form, Input, Button, Checkbox, notification } from "antd";
 import { connect } from "react-redux";
 
 import { addPost } from "../../../redux/actions/posts";
 
-const AddPost = ({ message, addPost }) => {
+const AddPost = ({ success, loading, message, addPost }) => {
   const onFinish = (values) => {
     console.log("Success:", values);
     addPost(values);
@@ -13,6 +13,23 @@ const AddPost = ({ message, addPost }) => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
+  useEffect(() => {
+    if (message !== "") {
+      if (success) {
+        notification.open({
+          message: "Success",
+          description: <p style={{ color: "green" }}>{message}</p>,
+        });
+      } else {
+        notification.open({
+          message: "Error",
+          description: <p style={{ color: "red" }}>{message}</p>,
+        });
+      }
+    }
+  }, [loading]);
+
   return (
     <Form
       name="basic"
@@ -45,9 +62,8 @@ const AddPost = ({ message, addPost }) => {
       >
         <Input />
       </Form.Item>
-      {message}
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary" htmlType="submit">
+        <Button loading={loading} type="primary" htmlType="submit">
           Add Post
         </Button>
       </Form.Item>
@@ -56,8 +72,11 @@ const AddPost = ({ message, addPost }) => {
 };
 
 function mapStateToProps(state) {
+  const { success, message, loading } = state.posts.addPost;
   return {
-    message: state.posts.addPost.message,
+    success,
+    message,
+    loading,
   };
 }
 

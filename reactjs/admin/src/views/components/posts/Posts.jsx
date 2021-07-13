@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Table, Tag, Space, notification } from "antd";
+import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { getPosts } from "../../../redux/actions/posts";
@@ -30,9 +31,9 @@ const columns = [
   {
     title: "Action",
     key: "action",
-    render: (text, record) => (
+    render: (_, record) => (
       <Space size="middle">
-        <a>Invite {record.name}</a>
+        <Link to={`/posts/edit/${record.id}`}>Edit</Link>
         <a>Delete</a>
       </Space>
     ),

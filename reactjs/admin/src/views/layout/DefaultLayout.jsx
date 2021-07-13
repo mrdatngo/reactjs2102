@@ -38,16 +38,20 @@ const DefaultLayout = ({ routes }) => {
               >
                 {route.children.map((subRoute) => {
                   return (
-                    <Menu.Item key={subRoute.path}>
-                      <Link to={subRoute.path}>{subRoute.title}</Link>
-                    </Menu.Item>
+                    !subRoute.hidden && (
+                      <Menu.Item key={subRoute.path}>
+                        <Link to={subRoute.path}>{subRoute.title}</Link>
+                      </Menu.Item>
+                    )
                   );
                 })}
               </SubMenu>
             ) : (
-              <Menu.Item key={route.path} icon={<FileOutlined />}>
-                <Link to={route.path}>{route.title}</Link>
-              </Menu.Item>
+              !route.hidden && true && (
+                <Menu.Item key={route.path} icon={<FileOutlined />}>
+                  <Link to={route.path}>{route.title}</Link>
+                </Menu.Item>
+              )
             );
           })}
         </Menu>

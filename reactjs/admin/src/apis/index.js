@@ -15,4 +15,14 @@ const addPost = (data) => {
     .then((rsp) => rsp.data);
 };
 
-export default { login, fetchPosts, addPost };
+const fetchPost = (id) => {
+  return axios
+    .get(`http://localhost:8080/api/post?id=${id}`)
+    .then((rsp) => rsp.data);
+};
+
+const updatePost = () => {
+  return axios.put("http://localhost:8080/api/post").then((rsp) => rsp.data);
+};
+
+export default { login, fetchPosts, addPost, fetchPost, updatePost };
